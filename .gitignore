@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+out/
+dist/
+dist-electron/
+
+# Logs
+*.log
+npm-debug.log*
+
+# electron-store config (contains encrypted secrets)
+# Remove this line if you want to commit a default config
+# %APPDATA%\unifi-viewport-liveview-switcher\config.json is outside the repo anyway
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.user
+
+# TypeScript
+*.tsbuildinfo
+
+# env files
+.env
+.env.*

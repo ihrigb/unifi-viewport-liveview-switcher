@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — UniFi Viewport Switcher</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-titlebar">
+    <span class="admin-titlebar-title">About</span>
+    <button class="admin-close-btn" id="btn-close" title="Close">&#x2715;</button>
+  </div>
+
+  <div class="admin-scroll">
+
+    <div class="about-hero">
+      <div class="about-app-name" id="about-app-name">UniFi Viewport Switcher</div>
+      <div class="about-version" id="about-version"></div>
+      <div class="about-author" id="about-author"></div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title" id="about-oss-title">Open Source Libraries</div>
+      <table class="about-table" id="about-table">
+        <thead>
+          <tr>
+            <th id="about-th-name">Library</th>
+            <th id="about-th-version">Version</th>
+            <th id="about-th-license">License</th>
+          </tr>
+        </thead>
+        <tbody id="about-tbody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script type="module" src="./about.ts"></script>
+</body>
+</html>

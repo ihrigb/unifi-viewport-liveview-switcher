@@ -1,0 +1,38 @@
+{
+  "name": "unifi-viewport-liveview-switcher",
+  "version": "1.0.3",
+  "description": "Compact desktop widget to switch UniFi Protect Viewport liveviews",
+  "main": "out/main/main.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "dev:mock": "node scripts/dev-mock.mjs",
+    "build": "electron-vite build && electron-builder",
+    "build:win": "electron-vite build && electron-builder --win",
+    "build:msi": "electron-vite build && electron-builder --win --target msi",
+    "preview": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json"
+  },
+  "keywords": [
+    "unifi",
+    "protect",
+    "viewport",
+    "liveview"
+  ],
+  "author": "ihrigb",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-toolkit/tsconfig": "^1.0.1",
+    "@types/node": "^20.14.0",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-vite": "^2.3.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.3.1"
+  },
+  "dependencies": {
+    "@electron-toolkit/utils": "^3.0.0",
+    "electron-log": "^5.4.4",
+    "electron-store": "^8.2.0",
+    "undici": "^6.19.2"
+  }
+}

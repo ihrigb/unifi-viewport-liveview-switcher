@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — UniFi Viewport Switcher</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="admin-body">
+  <div class="admin-titlebar">
+    <span class="admin-titlebar-title">Settings</span>
+    <button class="admin-close-btn" id="btn-close" title="Close">&#x2715;</button>
+  </div>
+
+  <div class="admin-scroll">
+
+    <!-- === Connection === -->
+    <div class="form-section">
+      <div class="form-section-title">NVR Connection</div>
+
+      <div class="form-row">
+        <label for="inp-host">NVR IP / Hostname</label>
+        <input type="text" id="inp-host" placeholder="192.168.1.1" autocomplete="off" spellcheck="false" />
+      </div>
+
+      <div class="form-row">
+        <label for="inp-apikey">API Key</label>
+        <input type="password" id="inp-apikey" placeholder="Leave blank to keep current" autocomplete="off" />
+      </div>
+
+      <div class="form-row checkbox-row">
+        <input type="checkbox" id="chk-skiptls" />
+        <label for="chk-skiptls">Skip TLS certificate verification (self-signed certs)</label>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-connect">Connect &amp; Fetch</button>
+        <span id="connect-status"></span>
+      </div>
+      <div id="connect-msg" style="display:none"></div>
+    </div>
+
+    <!-- === Viewport === -->
+    <div class="form-section" id="section-viewport" style="display:none">
+      <div class="form-section-title">Viewport</div>
+      <div class="form-row">
+        <label for="sel-viewport">Select Viewport</label>
+        <select id="sel-viewport">
+          <option value="">-- Select --</option>
+        </select>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" id="btn-fetch-liveviews">Load Liveviews</button>
+      </div>
+      <div id="liveviews-msg" style="display:none"></div>
+    </div>
+
+    <!-- === Liveviews === -->
+    <div class="form-section" id="section-liveviews" style="display:none">
+      <div class="form-section-title">Liveviews</div>
+      <p style="font-size:11px;color:var(--text-muted);margin-bottom:8px;">
+        Check liveviews to show them in the switcher. Optionally add a custom display name.
+      </p>
+      <div class="lv-list" id="lv-list"></div>
+    </div>
+
+    <!-- === Appearance === -->
+    <div class="form-section">
+      <div class="form-section-title">Appearance</div>
+      <div class="form-row checkbox-row">
+        <input type="checkbox" id="chk-ontop" />
+        <label for="chk-ontop">Always on top by default</label>
+      </div>
+      <div class="form-row checkbox-row">
+        <input type="checkbox" id="chk-startup" />
+        <label for="chk-startup">Launch at Windows login</label>
+      </div>
+      <div class="form-row">
+        <label for="inp-opacity" id="lbl-opacity">Window opacity: 100%</label>
+        <input type="range" id="inp-opacity" min="40" max="100" step="1" value="100" />
+      </div>
+      <div class="form-row">
+        <label for="sel-hotkey-mod" id="lbl-hotkey-mod">Global hotkey modifier</label>
+        <select id="sel-hotkey-mod">
+          <option value="Alt" id="opt-hotkey-alt">Alt (Alt+1 … Alt+9)</option>
+          <option value="Ctrl" id="opt-hotkey-ctrl">Ctrl (Ctrl+1 … Ctrl+9)</option>
+          <option value="" id="opt-hotkey-disabled">Disabled</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="inp-poll" id="lbl-poll">Background poll interval in seconds (0 = disabled)</label>
+        <input type="number" id="inp-poll" min="0" max="3600" step="10" value="60" />
+      </div>
+    </div>
+
+    <!-- === Admin password === -->
+    <div class="form-section">
+      <div class="form-section-title">Admin Password</div>
+      <div class="form-row">
+        <label for="inp-newpw">New password (leave blank to keep current)</label>
+        <input type="password" id="inp-newpw" placeholder="New password" autocomplete="new-password" />
+      </div>
+      <div class="form-row">
+        <label for="inp-newpw2">Confirm new password</label>
+        <input type="password" id="inp-newpw2" placeholder="Repeat new password" autocomplete="new-password" />
+      </div>
+    </div>
+
+    <!-- === Save === -->
+    <div class="btn-row" style="margin-top:4px;margin-bottom:4px;">
+      <button class="btn btn-primary" id="btn-save">Save Settings</button>
+      <button class="btn btn-secondary" id="btn-cancel">Cancel</button>
+      <button class="btn btn-secondary" id="btn-about">About</button>
+    </div>
+    <div id="save-msg" style="display:none"></div>
+
+  </div>
+
+  <script type="module" src="./admin.ts"></script>
+</body>
+</html>

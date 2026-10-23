@@ -1,0 +1,39 @@
+{
+  "appId": "com.unifi.viewport-switcher",
+  "productName": "UniFi Viewport Switcher",
+  "copyright": "Copyright © 2024",
+  "publish": null,
+  "directories": {
+    "output": "dist",
+    "buildResources": "assets"
+  },
+  "files": [
+    "out/**/*"
+  ],
+  "win": {
+    "target": [
+      { "target": "nsis", "arch": ["x64"] },
+      { "target": "msi",  "arch": ["x64"] },
+      { "target": "portable", "arch": ["x64"] }
+    ],
+    "icon": "assets/icon.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "UniFi Viewport Switcher"
+  },
+  "msi": {
+    "perMachine": true,
+    "upgradeCode": "CE538F94-93B1-4FA9-A036-C724C19AFEBB",
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "warningsAsErrors": false,
+    "additionalWixArgs": ["-sval"]
+  },
+  "portable": {
+    "artifactName": "${productName}-${version}-portable.${ext}"
+  }
+}
