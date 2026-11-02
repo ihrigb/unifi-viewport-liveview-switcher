@@ -1,6 +1,6 @@
 import { rmSync, existsSync } from 'fs'
 
-const dirs = ['out', 'dist']
+const dirs = ['out', 'dist', 'dist-electron']
 
 for (const dir of dirs) {
   if (existsSync(dir)) {
