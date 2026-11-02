@@ -18,11 +18,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev          # Start Electron with hot-reload (renderer only; main requires restart)
-npm run build        # Compile with electron-vite + package all targets
-npm run build:win    # Windows targets only (NSIS, MSI, portable)
-npm run build:msi    # MSI only
-npm run typecheck    # Type-check main and renderer separately (no emit)
+npm run dev             # Start Electron with hot-reload (renderer only; main requires restart)
+npm run build           # Compile with electron-vite + package all targets
+npm run build:win       # Windows targets only (NSIS, portable)
+npm run build:intunewin # Full build + wrap NSIS output into .intunewin for Intune deployment
+npm run typecheck       # Type-check main and renderer separately (no emit)
 ```
 
 No test suite exists yet.
@@ -62,9 +62,17 @@ The renderer does not poll for config. It polls for the active liveview on an in
 
 All user-visible strings live in `src/renderer/i18n/en.ts` (source of truth) and `src/renderer/i18n/de.ts`. The `de` file is typed as `typeof en`, so a missing or mistyped key is a compile error caught by `npm run typecheck`. Never hardcode English strings in `.ts` or `.html` files — always go through `t.keyName`.
 
-## MSI packaging known issue
+## Intune deployment
 
-`node_modules/app-builder-lib/out/targets/MsiTarget.js` contains a patch (line ~204) that sanitizes WiX `File` element IDs by replacing non-alphanumeric characters with underscores. Without this patch, files like `icudtl.dat` and `v8_context_snapshot.bin` are silently omitted from the MSI because WiX rejects IDs containing dots. This patch will be lost on `npm install` and must be reapplied. The `-sval` flag in `electron-builder.json` suppresses WiX validation, which is what hides the failure without the patch.
+The app is packaged for Intune as a `.intunewin` file (Win32 app). Run `npm run build:intunewin` — it builds the NSIS installer, downloads `IntuneWinAppUtil.exe` from GitHub into `tools/` (gitignored) if not present, and wraps the output.
+
+Intune app configuration:
+- **Install behavior:** User
+- **Install command:** `"UniFi Viewport Switcher Setup <version>.exe" /S /allusers`
+- **Uninstall command:** `"%ProgramFiles%\UniFi Viewport Switcher\Uninstall UniFi Viewport Switcher.exe" /S`
+- **Detection rule:** File — `C:\Program Files\UniFi Viewport Switcher\UniFi Viewport Switcher.exe`, Version, Greater than or equal to, `<major>.<minor>.<patch>.0`
+
+The exe's `FileVersion` is always four-part (e.g. `1.0.6.0`). `/allusers` installs to `C:\Program Files\` even when running as User context. Registry detection does not work for User-context installs as Intune detection runs as SYSTEM and cannot read `HKCU`.
 
 ## Config location
 

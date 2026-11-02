@@ -8,7 +8,7 @@
     "dev:mock": "node scripts/dev-mock.mjs",
     "build": "electron-vite build && electron-builder",
     "build:win": "electron-vite build && electron-builder --win",
-    "build:msi": "electron-vite build && electron-builder --win --target msi",
+    "build:intunewin": "npm run build:win && node scripts/build-intunewin.mjs",
     "preview": "electron-vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json"
   },

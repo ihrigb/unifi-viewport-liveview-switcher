@@ -28,6 +28,5 @@ desktop.ini
 # TypeScript
 *.tsbuildinfo
 
-# env files
-.env
-.env.*
+# Downloaded build tools
+tools/
