@@ -18,6 +18,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
+npm run clean           # Remove out/ and dist/
 npm run dev             # Start Electron with hot-reload (renderer only; main requires restart)
 npm run build           # Compile with electron-vite + package all targets
 npm run build:win       # Windows targets only (NSIS, portable)

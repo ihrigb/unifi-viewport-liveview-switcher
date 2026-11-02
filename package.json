@@ -4,7 +4,7 @@
   "description": "Compact desktop widget to switch UniFi Protect Viewport liveviews",
   "main": "out/main/main.js",
   "scripts": {
-    "dev": "electron-vite dev",
+    "clean": "node scripts/clean.mjs",
     "dev:mock": "node scripts/dev-mock.mjs",
     "build": "electron-vite build && electron-builder",
     "build:win": "electron-vite build && electron-builder --win",
