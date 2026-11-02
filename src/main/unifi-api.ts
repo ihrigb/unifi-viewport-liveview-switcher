@@ -86,12 +86,12 @@ export async function getActiveView(
   opts: ClientOptions,
   viewportId: string
 ): Promise<UnifiViewportState> {
-  const data = await doRequest<{ liveview?: { id: string } }>(
+  const data = await doRequest<{ liveview?: string | null }>(
     opts,
     'GET',
     `/viewers/${viewportId}`
   )
-  return { liveviewId: data.liveview?.id ?? null }
+  return { liveviewId: data.liveview ?? null }
 }
 
 export async function setActiveView(

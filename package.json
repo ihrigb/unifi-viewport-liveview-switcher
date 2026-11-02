@@ -1,6 +1,6 @@
 {
   "name": "unifi-viewport-liveview-switcher",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Compact desktop widget to switch UniFi Protect Viewport liveviews",
   "main": "out/main/main.js",
   "scripts": {

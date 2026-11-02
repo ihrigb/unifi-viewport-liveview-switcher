@@ -57,12 +57,16 @@ Returns the current state of a specific Viewport, including its active liveview.
 Response:
 ```json
 {
-  "id": "abc123",
-  "liveview": { "id": "def456" }
+  "id": "66d025b301ebc903e80003ea",
+  "modelKey": "viewer",
+  "state": "CONNECTED",
+  "name": "Front Door",
+  "type": "UVC Micro",
+  "liveview": "66d025b301ebc903e80003eb"
 }
 ```
 
-If no liveview is set, the `liveview` key may be absent.
+`liveview` is a plain string ID. If no liveview is set, `liveview` is `null` or absent.
 
 ### PATCH `/viewers/:viewportId`
 
@@ -70,10 +74,21 @@ Sets the active liveview on a Viewport.
 
 Request body:
 ```json
-{ "liveview": "def456" }
+{ "liveview": "66d025b301ebc903e80003eb" }
 ```
 
-Response: 200 with the updated viewer object on success.
+Response: 200 with the updated viewer object:
+```json
+{
+  "id": "66d025b301ebc903e80003ea",
+  "modelKey": "viewer",
+  "state": "CONNECTED",
+  "name": "Front Door",
+  "type": "UVC Micro",
+  "liveview": "66d025b301ebc903e80003eb",
+  "streamLimit": 1
+}
+```
 
 ## Error Handling
 

@@ -4,11 +4,11 @@
   "copyright": "Copyright © 2024",
   "publish": null,
   "directories": {
-    "output": "dist",
-    "buildResources": "assets"
+    "output": "dist"
   },
   "files": [
-    "out/**/*"
+    "out/**/*",
+    "assets/**/*"
   ],
   "win": {
     "target": [
