@@ -67,7 +67,7 @@ All user-visible strings live in `src/renderer/i18n/en.ts` (source of truth) and
 The app is packaged for Intune as a `.intunewin` file (Win32 app). Run `npm run build:intunewin` — it builds the NSIS installer, downloads `IntuneWinAppUtil.exe` from GitHub into `tools/` (gitignored) if not present, and wraps the output.
 
 Intune app configuration:
-- **Install behavior:** System (untested; User confirmed working)
+- **Install behavior:** System
 - **Install command:** `"UniFi Viewport Switcher Setup <version>.exe" /S /allusers`
 - **Uninstall command:** `"%ProgramFiles%\UniFi Viewport Switcher\Uninstall UniFi Viewport Switcher.exe" /S`
 - **Detection rule:** File — `C:\Program Files\UniFi Viewport Switcher\UniFi Viewport Switcher.exe`, Version, Greater than or equal to, `<major>.<minor>.<patch>.0`
