@@ -43,4 +43,4 @@ See [docs/ipc-api.md](docs/ipc-api.md) for the full IPC channel reference.
 
 ## License
 
-MIT
+GPL-3.0-or-later
