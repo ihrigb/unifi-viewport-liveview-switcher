@@ -19,7 +19,7 @@
     "liveview"
   ],
   "author": "ihrigb",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@electron-toolkit/tsconfig": "^1.0.1",
     "@types/node": "^20.14.0",
