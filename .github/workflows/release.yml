@@ -23,7 +23,7 @@ jobs:
         with:
           # Full history so the version bump commit can be pushed
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.RELEASE_PAT }}
 
       - uses: actions/setup-node@v4
         with:
@@ -52,7 +52,7 @@ jobs:
           git add package.json package-lock.json
           git commit -m "chore: bump version to ${{ steps.version.outputs.value }}"
           git tag "v${{ steps.version.outputs.value }}"
-          git push origin main --follow-tags
+          git push https://x-access-token:${{ secrets.RELEASE_PAT }}@github.com/${{ github.repository }}.git main --follow-tags
 
       - name: Build
         run: npm run build:win
