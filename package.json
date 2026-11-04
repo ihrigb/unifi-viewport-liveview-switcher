@@ -24,7 +24,7 @@
   "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@electron-toolkit/tsconfig": "^2.0.0",
-    "@types/node": "^20.14.0",
+    "@types/node": "^26.0.0",
     "electron": "^31.0.0",
     "electron-builder": "^24.13.3",
     "electron-vite": "^2.3.0",
