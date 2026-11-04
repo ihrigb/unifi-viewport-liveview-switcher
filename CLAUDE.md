@@ -9,6 +9,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Version bumps are always a separate commit — never fold them into a fix or feature commit.
 - Use **Conventional Commits** format: `fix:`, `feat:`, `chore:`, `docs:`, `refactor:`, `test:`.
 - Run `npm run typecheck` before every commit that touches `src/`. Block and report if it fails.
+- Run `npm test` before every commit that touches `src/`. Block and report if it fails.
 - After completing a fix or feature, suggest a version bump but wait for explicit confirmation before doing it.
 
 ### Version bumps
@@ -24,9 +25,11 @@ npm run build           # Compile with electron-vite + package all targets
 npm run build:win       # Windows targets only (NSIS, portable)
 npm run build:intunewin # Full build + wrap NSIS output into .intunewin for Intune deployment
 npm run typecheck       # Type-check main and renderer separately (no emit)
+npm test                # Run unit tests with Vitest (vitest run)
+npm run test:watch      # Vitest in watch mode
 ```
 
-No test suite exists yet.
+Tests live in `src/**/*.test.ts`. Run `npm run typecheck` and `npm test` before every commit that touches `src/`.
 
 ## Architecture
 
